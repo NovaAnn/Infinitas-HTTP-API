@@ -1,16 +1,6 @@
 const { buildSchema } = require("graphql");
 
 module.exports = buildSchema(`
-    type Details{
-        _id: ID!
-        firstName: String!
-         lastName: String!
-         email: String!
-         city: String!
-         phoneNumber: Float!
-         bankAccount: String!
-         streetLine1: String!
-    }
     type Request {
         id:ID!
         workerId:ID!
@@ -29,9 +19,9 @@ module.exports = buildSchema(`
     }
 
     type RootMutation {
-    createManager(name: String!, dob:String!): Boolean
-    createWorker(name: String!,leavesRemaining:Int,managerId:ID!): Boolean
-    createRequest(workerId: ID!,startDate:String!,endDate:String!): Boolean
+        createManager(name: String!, dob:String!): Boolean
+        createWorker(name: String!,leavesRemaining:Int,managerId:ID!): Boolean
+        createRequest(workerId: ID!,startDate:String!,endDate:String!): Boolean
     }
 
     schema {
