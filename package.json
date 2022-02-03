@@ -1,0 +1,25 @@
+{
+  "name": "infinitas-assignment",
+  "version": "1.0.0",
+  "description": "Vacation App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js --delay 2000ms",
+    "start-server": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.7.2",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "NovaAnn"
+  },
+  "author": "Nova Ann",
+  "license": "ISC"
+}
