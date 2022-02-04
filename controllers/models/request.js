@@ -11,7 +11,7 @@ const requestSchema = new Schema({
   endDate: Date,
   status:{
       type:String,
-      default:'Pending',
+      default:'PENDING',
       required:true
   },
   managerId:{
