@@ -7,9 +7,11 @@ Endpoint : http://localhost:4000/graphql
 Query Name: getMyRequests
 #### Arguments:
 -->workerId ----ID of the Employee --(Required argument)
--->status   ----request status --(Optional) --- If provided, the API will return the requests with the     given status.If not provided will get all the requests of the employee.
+
+-->status   ----request status --(Optional) --- If provided, the API will return the requests with the    given status.If not provided will get all the requests of the employee.
 #### Fields available for selection:
 -->Requests (#Array of objects)
+
         id          ------> ID of the request
         workerId    ------> ID of the employee
         workerName  ------> name of the employee
@@ -56,6 +58,7 @@ Query Name: getMyRequests
 
 Query Name: getLeaves
 #### Arguments:
+
 -->workerId ----ID of the Employee --(Required argument)
 
 #### Fields available for selection:
@@ -78,7 +81,9 @@ Sample Result :
 Mutation Name: createRequest
 #### Arguments:
 -->workerId  ----ID of the Employee --(Required argument)
+
 -->startDate ----Start Date of the vacation
+
 -->endDate   ----End Date of the vacation
 
 #### Fields available for selection:
@@ -102,9 +107,12 @@ No fields available for selection, returns a Boolean.Returns True if request is 
 Query Name: getMyWorklistRequests
 #### Arguments:
 -->managerId ----ID of the Manager --(Required argument)
+
 -->status   ----request status --(Optional) --- If provided, the API will return the requests with the    given status.If not provided will get all the requests.
+
 #### Fields available for selection:
 -->items (#Array of objects)
+
         id          ------> ID of the request
         managerId   ------> ID of the manager
         employeeName ------> name of the employee
@@ -161,12 +169,16 @@ Query Name: getMyWorklistRequests
 Query Name: seeSingleEmployee
 #### Arguments:
 -->managerId ----ID of the Manager --(Required argument)
+
 -->workerId  ----ID of the Employee --(Required argument)
 #### Fields available for selection:
+
         employeeId      ------> ID of the request
         leavesRemaining ------> ID of the employee
         name            ------> name of the employee
+
         requests (Array of requests)
+
                 id          ------> ID of the request
                 workerId    ------> ID of the employee
                 status      ------> status of the request
@@ -222,6 +234,7 @@ Query Name: getOverlappingRequests
 
 #### Fields available for selection:
 -->overlapArray (#Array of objects)
+
         requestId    ------> ID of the request
         employeeId   ------> ID of the employee
         employeeName ------> name of the employee
@@ -274,7 +287,9 @@ Query Name: getOverlappingRequests
 Mutation Name: processRequest
 #### Arguments:
 -->managerId ----ID of the Manager --(Required argument)
+
 -->requestId ----ID of the Request --(Required argument)
+
 -->status    ----status as decided by the manager 
 
 #### Fields available for selection:
