@@ -1,14 +1,14 @@
-### API Documentation:
+#### API Documentation:
 
 Endpoint : http://localhost:4000/graphql
 
-1. Enable workers to see their requests.Flexibility is there to view all the requests,(if no status given in parameters), and to view the request with a particular status (is status is provided in parameters)
+### 1.Enable workers to see their requests.Flexibility is there to view all the requests,(if no status given in parameters), and to view the request with a particular status (is status is provided in parameters)
 
 Query Name: getMyRequests
-# Arguments:
+#### Arguments:
 -->workerId ----ID of the Employee --(Required argument)
 -->status   ----request status --(Optional) --- If provided, the API will return the requests with the     given status.If not provided will get all the requests of the employee.
-### Fields available for selection:
+#### Fields available for selection:
 -->Requests (#Array of objects)
         id          ------> ID of the request
         workerId    ------> ID of the employee
@@ -20,7 +20,7 @@ Query Name: getMyRequests
         createdAt   ------> the date on which you created the request
         
 
-### Sample Request:
+#### Sample Request:
  query {
         getMyRequests(workerId:"61fc0c93245c1349933adb88",status:"Approved"){
       Requests{
@@ -34,7 +34,7 @@ Query Name: getMyRequests
   } 
 }
 
-### Sample Response:
+#### Sample Response:
 {
   "data": {
     "getMyRequests": {
@@ -52,13 +52,13 @@ Query Name: getMyRequests
   }
 }
 
-2. Enable workers to see their remaining leaves.
+### 2. Enable workers to see their remaining leaves.
 
 Query Name: getLeaves
-### Arguments:
+#### Arguments:
 -->workerId ----ID of the Employee --(Required argument)
 
-### Fields available for selection:
+#### Fields available for selection:
 -->No fields available since the number of leaves is returned as a primitive numeric value
         
 
@@ -73,37 +73,37 @@ Sample Result :
     "getLeaves": 0
   }
 }
-3. Enable workers to make a new request if they have leaves remaining.
+#### 3. Enable workers to make a new request if they have leaves remaining.
 
-Query Name: createRequest
-### Arguments:
+Mutation Name: createRequest
+#### Arguments:
 -->workerId  ----ID of the Employee --(Required argument)
 -->startDate ----Start Date of the vacation
 -->endDate   ----End Date of the vacation
 
-### Fields available for selection:
+#### Fields available for selection:
 No fields available for selection, returns a Boolean.Returns True if request is created successfully.
         
 
-### Sample Request:
+#### Sample Request:
  mutation {
         createRequest(workerId:"61fc0c93245c1349933adb88",startDate:"2022-03-04",endDate:"2022-03-10") 
        }
 
-### Sample Response:
+#### Sample Response:
 {
   "data": {
     "createRequest": true
   }
 }
 
-4. Enable managers to see all their requests.
+### 4. Enable managers to see all their requests.
 
 Query Name: getMyWorklistRequests
-### Arguments:
+#### Arguments:
 -->managerId ----ID of the Manager --(Required argument)
 -->status   ----request status --(Optional) --- If provided, the API will return the requests with the    given status.If not provided will get all the requests.
-### Fields available for selection:
+#### Fields available for selection:
 -->items (#Array of objects)
         id          ------> ID of the request
         managerId   ------> ID of the manager
@@ -114,7 +114,7 @@ Query Name: getMyWorklistRequests
         createdAt   ------> the date on which you created the request
         
 
-### Sample Request:
+#### Sample Request:
  query {
         getMyWorklistRequests(managerId:"61fc0556a2869e9b59cf0c0c",status:"Pending"){
       items{
@@ -129,7 +129,7 @@ Query Name: getMyWorklistRequests
   } 
 }
 
-### Sample Response:
+#### Sample Response:
 {
   "data": {
     "getMyWorklistRequests": {
@@ -156,13 +156,13 @@ Query Name: getMyWorklistRequests
     }
   }
 }
-5. Enable managers to see individual employee.
+### 5. Enable managers to see individual employee.
 
 Query Name: seeSingleEmployee
-### Arguments:
+#### Arguments:
 -->managerId ----ID of the Manager --(Required argument)
 -->workerId  ----ID of the Employee --(Required argument)
-### Fields available for selection:
+#### Fields available for selection:
         employeeId      ------> ID of the request
         leavesRemaining ------> ID of the employee
         name            ------> name of the employee
@@ -176,7 +176,7 @@ Query Name: seeSingleEmployee
                 createdAt   ------> the date on which you created the request
         
 
-### Sample Request:
+#### Sample Request:
  query {
         seeSingleEmployee(managerId:"61fc0556a2869e9b59cf0c0c",workerId:"61fc0c93245c1349933adb88"){
       employeeId
@@ -194,7 +194,7 @@ Query Name: seeSingleEmployee
   } 
 }
 
-### Sample Response:
+#### Sample Response:
 {
   "data": {
     "seeSingleEmployee": {
@@ -214,13 +214,13 @@ Query Name: seeSingleEmployee
     }
   }
 }
-6. Enable managers to see overlapping requests. This allows to see the requests, for which the dates are overlapping and would help the manager to decide whether to approve/reject the request.
+### 6. Enable managers to see overlapping requests. This allows to see the requests, for which the dates are overlapping and would help the manager to decide whether to approve/reject the request.
 
 Query Name: getOverlappingRequests
-### Arguments:
+#### Arguments:
 -->managerId ----ID of the Manager --(Required argument)
 
-### Fields available for selection:
+#### Fields available for selection:
 -->overlapArray (#Array of objects)
         requestId    ------> ID of the request
         employeeId   ------> ID of the employee
@@ -230,7 +230,7 @@ Query Name: getOverlappingRequests
         createdAt    ------> the date on which you created the request
         
 
-### Sample Request:
+#### Sample Request:
  query {
         getOverlappingRequests(managerId:"61fc0556a2869e9b59cf0c0c"){
       overlapArray{
@@ -244,7 +244,7 @@ Query Name: getOverlappingRequests
   } 
 }
 
-### Sample Response:
+#### Sample Response:
 {
   "data": {
     "getOverlappingRequests": {
@@ -269,24 +269,24 @@ Query Name: getOverlappingRequests
     }
   }
 }
-7. Enable managers to resolve a particular request with a specific status.
+### 7. Enable managers to resolve a particular request with a specific status.
 
-Query Name: processRequest
-### Arguments:
+Mutation Name: processRequest
+#### Arguments:
 -->managerId ----ID of the Manager --(Required argument)
 -->requestId ----ID of the Request --(Required argument)
 -->status    ----status as decided by the manager 
 
-### Fields available for selection:
+#### Fields available for selection:
 
 No fields available for selection, returns a Boolean.Returns True if request is processed successfully.
 
-### Sample Request:
+#### Sample Request:
  mutation {
         processRequest(managerId:"61fc0556a2869e9b59cf0c0c",requestId:"61fc1091f926191c70ccdd69",status:"APPROVED") 
         }
 
-### Sample Response:
+#### Sample Response:
 {
   "data": {
     "processRequest": true
