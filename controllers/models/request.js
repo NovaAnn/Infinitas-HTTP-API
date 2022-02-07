@@ -1,25 +1,26 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const requestSchema = new Schema({
-  workerId:{
-        type: Schema.Types.ObjectId,
-        ref: 'Worker',
-        required: true
-      },
-  startDate: Date,
-  endDate: Date,
-  status:{
-      type:String,
-      default:'PENDING',
-      required:true
+const requestSchema = new Schema(
+  {
+    workerId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Worker',
+      required: true,
+    },
+    startDate: Date,
+    endDate: Date,
+    status: {
+      type: String,
+      default: 'PENDING',
+      required: true,
+    },
+    managerId: {
+      type: Schema.Types.ObjectId,
+      required: true,
+    },
   },
-  managerId:{
-    type: Schema.Types.ObjectId,
-    required: true
-  },  
-  
-},{timestamps:true});
+  { timestamps: true }
+);
 
-
-module.exports = mongoose.model("Request", requestSchema);
+module.exports = mongoose.model('Request', requestSchema);

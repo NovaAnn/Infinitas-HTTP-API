@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const workerSchema = new Schema({
@@ -9,26 +9,23 @@ const workerSchema = new Schema({
   leavesRemaining: {
     type: Number,
     required: true,
-    default:30,
+    default: 30,
   },
-  manager:{
+  manager: {
     type: Schema.Types.ObjectId,
     ref: 'Manager',
-    required: true
+    required: true,
   },
-  
+
   requests: [
     {
       requestId: {
         type: Schema.Types.ObjectId,
         ref: 'Request',
-        required: true
-      }
-    }
+        required: true,
+      },
+    },
   ],
-
-  
 });
 
-
-module.exports = mongoose.model("Worker", workerSchema);
+module.exports = mongoose.model('Worker', workerSchema);

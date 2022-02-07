@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const managerSchema = new Schema({
@@ -6,9 +6,7 @@ const managerSchema = new Schema({
     type: String,
     required: true,
   },
-  dateOfBirth:Date,
-  
+  dateOfBirth: Date,
 });
 
-
-module.exports = mongoose.model("Manager", managerSchema);
+module.exports = mongoose.model('Manager', managerSchema);

@@ -1,21 +1,18 @@
-
-const express = require("express");
-const mongoose = require("mongoose");
-const { graphqlHTTP } = require("express-graphql");
-const graphqlSchema = require("./controllers/graphql/schema");
-const graphqlResolver = require("./controllers/graphql/resolvers");
-
+const express = require('express');
+const mongoose = require('mongoose');
+const { graphqlHTTP } = require('express-graphql');
+const graphqlSchema = require('./controllers/graphql/schema');
+const graphqlResolver = require('./controllers/graphql/resolvers');
 
 const app = express();
-
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
 app.use(
-  "/graphql",
+  '/graphql',
   graphqlHTTP({
     schema: graphqlSchema,
     rootValue: graphqlResolver,
@@ -25,14 +22,12 @@ app.use(
         return err;
       }
       const data = err.originalError.data;
-      const message = err.message || "An error occurred.";
+      const message = err.message || 'An error occurred.';
       const code = err.originalError.code || 500;
       return { message: message, status: code, data: data };
     },
   })
 );
-
-
 
 app.use((error, req, res, next) => {
   const status = error.statusCode || 500;
@@ -41,10 +36,9 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message, data: data });
 });
 
-// app.listen(8000);
 mongoose
   .connect(
-    "mongodb+srv://NovaAnn:kwmwBi9wmLJ0nYBw@cluster0.nn0w8.mongodb.net/infinitasAssignment?retryWrites=true&w=majority",
+    'mongodb+srv://NovaAnn:kwmwBi9wmLJ0nYBw@cluster0.nn0w8.mongodb.net/infinitasAssignment?retryWrites=true&w=majority',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -54,4 +48,6 @@ mongoose
     app.listen(4000);
     console.log('listening');
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log(err);
+  });

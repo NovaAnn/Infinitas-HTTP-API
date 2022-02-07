@@ -1,4 +1,4 @@
-const { buildSchema } = require("graphql");
+const { buildSchema } = require('graphql');
 
 module.exports = buildSchema(`
     type Request {
@@ -23,7 +23,7 @@ module.exports = buildSchema(`
     type employee {
         employeeId:ID!
         name:String!
-        leavesRemaining:String!
+        leavesRemaining:Int!
         requests:[Request]
     }
     type overlapRequest {
@@ -32,7 +32,7 @@ module.exports = buildSchema(`
         employeeId:ID!
         startDate:String!
         endDate:String!
-        createdAt:[Request]
+        createdAt:String!
     }
     type RequestList{
         Requests: [Request]
@@ -51,6 +51,7 @@ module.exports = buildSchema(`
         getLeaves(workerId:ID!):Int!
         getMyWorklistRequests(managerId:ID!,status:String):workList!
         seeMyEmployees(managerId:ID!):employeeList!
+        seeSingleEmployee(managerId:ID!,workerId:ID!):employee!
         getOverlappingRequests(managerId:ID!):overlapList!
 
     }
