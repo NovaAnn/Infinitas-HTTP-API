@@ -1,9 +1,11 @@
 ### API Documentation:
 
+Endpoint : http://localhost:4000/graphql
+
 1. Enable workers to see their requests.Flexibility is there to view all the requests,(if no status given in parameters), and to view the request with a particular status (is status is provided in parameters)
 
 Query Name: getMyRequests
-### Arguments:
+# Arguments:
 -->workerId ----ID of the Employee --(Required argument)
 -->status   ----request status --(Optional) --- If provided, the API will return the requests with the     given status.If not provided will get all the requests of the employee.
 ### Fields available for selection:
